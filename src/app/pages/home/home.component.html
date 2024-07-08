@@ -1,0 +1,28 @@
+<p>home works for everyone!</p>
+
+<form>
+
+    <fieldset>
+        <label for="login">Login : </label>
+        <select name="role" [(ngModel)]="userLogin">
+            @for (user of userSvc.users; track $index) {
+            <option value="{{user.login}}">{{user.login}}</option>
+            }
+        </select>
+        <p>Athentication : {{userLogin}} {{userSvc.isAuthenticated() ? "succed" : "failed"}}</p>
+    </fieldset>
+
+
+    <fieldset>
+        <label for="role">Role : </label>
+        <select name="role" [(ngModel)]="userRole">
+            <option value="ANONYMOUS">Anonymous</option>
+            <option value="USER">User</option>
+            <option value="ADMIN">Admin</option>
+        </select>
+        <p>role: {{userRole}}</p>
+    </fieldset>
+
+    <button (click)="getAuthenticated()">Connection</button>
+
+</form>
